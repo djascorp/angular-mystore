@@ -11,7 +11,6 @@ export class ProductItemComponent {
   @Input()
   product: Product|undefined;
   quantity: number = 1;
-  test: string = '';
   
   @Output() onClickAdd: EventEmitter<Order> = new EventEmitter();
 

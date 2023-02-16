@@ -1,6 +1,8 @@
 <div class="product-container">
     <div >
-        <img class="product-image" [src]="product?.url" [alt]="product?.name">
+        <a [routerLink]="['/product-detail', product?.id]">
+            <img class="product-image" [src]="product?.url" [alt]="product?.name">
+        </a>
     </div>
     <div>
         {{product?.name}}
@@ -10,10 +12,7 @@
     </div>
     <div>
        <select [(ngModel)]="quantity" class="select-input">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+            <option *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">{{i}}</option>
        </select>
     </div>
     <div>
