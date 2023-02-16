@@ -19,3 +19,14 @@
   width: 108px; 
   margin-bottom: 8px;
 }
+
+.btn-primary{
+  padding: 10px;
+  border: none;
+  border-radius: 0;
+  border-color: #0D80DF;
+  background-color: #0D80DF;
+  stroke-width: 0;
+  color: white;
+  cursor: pointer;
+}

@@ -1,5 +1,5 @@
-<div class="product-container">
-    <div class="" *ngFor="let product of products">
-        {{product.name}}
+<div class="product-index">
+    <div class="product-container" *ngFor="let product of products">
+        <product-item [product]="product" (onClickAdd)="addToCard($event)" />
     </div>
 </div>

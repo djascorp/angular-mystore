@@ -1,1 +1,72 @@
-<h2>Card</h2>
+<div class="cart-container">
+    <div class="empty-cart-message" *ngIf="cart.orderList.length==0">
+        No Orders was done
+    </div>
+    <form #form="ngForm" id="formulaire" class="cart-info-user" [noValidate]="false" (ngSubmit)="onSubmit(form)" *ngIf="cart.orderList.length>0" >
+        <div class="cart-info">
+            <div class="cart-item" *ngFor="let order of cart.orderList; index as i">
+                <div>
+                    <img class="cart-image" [src]="order.product.url" [alt]="order.product.name" />
+                </div>
+                <div class="cart-detail">
+                    <div>{{order.product.name}}</div>
+                    <div>{{order.product.price}}</div>
+                    <div>Amount :
+                        <input (change)="onChangeAmount(order,i)" class="cart-amount" type="number" min="0"
+                            name="quantity" [(ngModel)]="order.quantity">
+                    </div>
+                </div>
+            </div>
+            <div>
+                Total Amount : <span style="font-weight: bold;">${{cart.totalOrder}}</span>
+            </div>
+        </div>
+        <div class="user-info">
+            <div class="user-info-item">
+                <label>Full Name</label>
+                <input [(ngModel)]="full_name" #fullName="ngModel" required minlength="3" class="user-input" type="text"
+                    name="full_name" placeholder="(Minimum 3 Characters)" />
+                    
+                <div *ngIf="fullName.invalid && fullName.dirty">
+                    <div *ngIf="fullName.errors?.['required']" class="error-message">
+                        Please provide a Your Full Name.
+                    </div>
+                    <div *ngIf="fullName.errors?.['minlength']" class="error-message">
+                        The Full Name must be over 3 Characters.
+                    </div>
+                </div>
+            </div>
+            <div class="user-info-item">
+                <label>Adress</label>
+                <input [(ngModel)]="adress" #Adress="ngModel" required minlength="6" class="user-input" type="text" name="adress"
+                    placeholder="(Minimum 6 Characters)" />
+                    <div *ngIf="Adress.invalid && Adress.dirty">
+                        <div *ngIf="Adress.errors?.['required']" class="error-message">
+                            Please provide your adress
+                        </div>
+                        <div *ngIf="Adress.errors?.['minlength']" class="error-message">
+                            The Adress must be over 6 Characters.
+                        </div>
+                    </div>
+            </div>
+            <div class="user-info-item">
+                <label>Credit Card Number</label>
+                <input [(ngModel)]="card_number" #cardNumber="ngModel" required pattern="\d{16}" class="user-input" type="text" name="card-number" 
+                    placeholder="(16-digit number)" />
+                    <div *ngIf="cardNumber.invalid && cardNumber.dirty">
+                        <div *ngIf="cardNumber.errors?.['required']" class="error-message">
+                            Please provide your card number
+                        </div>
+                        {{cardNumber.errors}}
+                        <div *ngIf="cardNumber.errors?.['pattern']" class="error-message">
+                            Please provide a valid card number (Must Be 16 Digits)
+                        </div>
+                    </div>
+            </div>
+            <div>
+
+                <input type="submit" value="Purchase" class="btn-submit" />
+            </div>
+        </div>
+    </form>
+</div>
