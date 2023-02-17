@@ -12,8 +12,8 @@
                     <div>{{order.product.name}}</div>
                     <div>{{order.product.price}}</div>
                     <div>Amount :
-                        <input (change)="onChangeAmount(order,i)" class="cart-amount" type="number" min="0"
-                            name="quantity" [(ngModel)]="order.quantity">
+                        <input  class="cart-amount" type="number" min="0"
+                            name="quantity" [(ngModel)]="order.quantity" (ngModelChange)="onChangeAmount(order,i)">
                     </div>
                 </div>
             </div>

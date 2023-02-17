@@ -27,6 +27,7 @@ export class ProductListComponent implements OnInit {
 
   public addToCard(order: Order){
     console.log("Commande ",order)
+    order.quantity = Number(order.quantity);
     this.cart.pushOrder(order);
     alert("Added to cart")
   }

@@ -36,11 +36,11 @@ export class CartComponent  {
         if(order.quantity == 0){
             this.cart.removeOrder(index);
             alert("Removed From Order")
+        }else{
+            this.cart.updateTotalOrder();
         }
     }
-
    
-
 
 
 }

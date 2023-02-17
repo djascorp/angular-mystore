@@ -10,7 +10,16 @@ export class CartService {
   constructor() { }
 
   public pushOrder(order: Order){
-    this.orderList.push(order);
+    // Test if the product exist in the order list
+    if(this.orderList.filter(o => o.product.id == order.product.id).length == 0 ){
+      this.orderList.push(order);
+    }else{
+      // We add the new quantity to the existing order
+      let existing_order:Order = this.orderList.filter(o => o.product.id == order.product.id)[0];
+      existing_order.quantity =  Number(existing_order.quantity) + Number(order.quantity);
+    }
+    // this.orderList.push(order);
+    
     this.updateTotalOrder();
   }
   public removeOrder(index:number){
